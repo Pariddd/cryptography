@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <script src="app.js"></script>
+  </head>
+  <body
+    class="bg-gray-900 text-white flex flex-col items-center justify-center min-h-screen p-4"
+  >
+    <div class="w-full max-w-lg bg-gray-800 p-6 rounded-lg shadow-lg">
+      <h1 class="text-2xl md:text-3xl font-bold text-center text-white">
+        CAESAR CIPHER
+      </h1>
+      <p class="text-md text-gray-400 text-center mb-6">
+        Kriptografi dan Steganografi.
+      </p>
+      <form class="space-y-4">
+        <div>
+          <label for="inputText" class="block text-sm font-medium mb-2"
+            >Plaintext / Ciphertext</label
+          >
+          <textarea
+            id="inputText"
+            placeholder="Masukkan teks yang ingin di-encrypt atau di-decrypt"
+            rows="4"
+            class="w-full p-3 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+          ></textarea>
+        </div>
+        <div>
+          <label for="key" class="block text-sm font-medium mb-1"
+            >Key (0-94):</label
+          >
+          <input
+            type="number"
+            placeholder="Masukkan angka 0-94"
+            id="key"
+            class="w-full p-3 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+            min="0"
+            max="25"
+          />
+          <p class="text-xs text-gray-400 italic">
+            *key(kunci): 0-94 untuk encrypt / decrypt pesan.
+          </p>
+        </div>
+        <div class="flex flex-wrap gap-3 justify-center">
+          <button
+            type="button"
+            onclick="encrypt()"
+            class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-md font-bold transition"
+          >
+            Encrypt
+          </button>
+          <button
+            type="button"
+            onclick="clearText()"
+            class="px-4 py-2 bg-red-600 hover:bg-red-700 rounded-md font-bold transition"
+          >
+            Clear
+          </button>
+          <button
+            type="button"
+            onclick="decrypt()"
+            class="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-md font-bold transition"
+          >
+            Decrypt
+          </button>
+        </div>
+        <div class="mt-2">
+          <label for="result" class="block text-sm font-medium mb-2"
+            >Result:</label
+          >
+          <div class="flex">
+            <textarea
+              id="result"
+              placeholder="Hasil proses akan muncul di sini"
+              rows="4"
+              class="w-full p-3 bg-gray-700 border border-gray-600 rounded-l-md focus:outline-none resize-none"
+              readonly
+            ></textarea>
+            <button
+              type="button"
+              onclick="copyResult()"
+              class="px-3 py-3 bg-gray-600 hover:bg-gray-500 rounded-r-md border border-gray-600 transition flex items-center justify-center"
+              title="Salin ke clipboard"
+            >
+              📋
+            </button>
+          </div>
+          <p
+            id="copy-success"
+            class="text-xs text-green-400 mt-1 opacity-0 transition-opacity"
+          >
+            ✔️ Tersalin!
+          </p>
+        </div>
+        <p class="text-md text-gray-400 text-center mt-2">
+          Farid Kurniawan (230170069)
+        </p>
+      </form>
+    </div>
+  </body>
+</html>
