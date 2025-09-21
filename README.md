@@ -1,10 +1,6 @@
 # Caesar Cipher
 
-Caesar Cipher adalah salah satu teknik enkripsi paling sederhana dan paling terkenal dalam kriptografi klasik. Metode ini dinamakan berdasarkan Julius Caesar, yang konon menggunakannya untuk berkomunikasi dengan para jenderalnya.
-
-## Deskripsi
-
-Caesar Cipher adalah jenis **substitution cipher** dimana setiap huruf dalam plaintext (teks asli) diganti dengan huruf lain yang berada pada posisi tetap dalam alfabet. Misalnya, dengan shift 3, huruf 'A' akan menjadi 'D', 'B' menjadi 'E', dan seterusnya.
+Caesar Cipher adalah salah satu metode enkripsi pesan yang paling sederhana dan tertua, dinamai berdasarkan Julius Caesar, yang konon menggunakannya untuk melindungi komunikasi militernya. Teknik ini melibatkan pergeseran huruf alfabet dengan jumlah tempat tertentu. Misalnya, dengan pergeseran tiga kali, huruf 'A' menjadi 'D', 'B' menjadi 'E', dan seterusnya. Meskipun sederhana, Sandi Caesar membentuk dasar bagi teknik kriptografi modern.
 
 ## 📝 Konsep Dasar
 
