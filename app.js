@@ -1,3 +1,68 @@
+let isVigenere = false;
+let vigenereMode = "huruf";
+
+function toggleCipherMode() {
+  const title = document.getElementById("title");
+  const keyContainer = document.getElementById("keyContainer");
+  const toggleBtn = document.getElementById("toggleBtn");
+  const vigenereOptions = document.getElementById("vigenereOptions");
+
+  clearText();
+
+  if (!isVigenere) {
+    title.textContent = "VIGENÈRE CIPHER";
+    keyContainer.innerHTML = `
+      <label for="key" class="block text-sm font-medium mb-1">Key (kata kunci):</label>
+      <input
+        type="text"
+        placeholder="Masukkan kata kunci (huruf atau angka, pisahkan dengan koma untuk angka)"
+        id="key"
+        class="w-full p-3 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-purple-500"
+      />
+      <p class="text-xs text-gray-400 italic">
+        *Gunakan huruf (A-Z) untuk mode huruf, atau angka (boleh lebih dari satu digit) pisahkan dengan koma, contoh: 12,5,9.
+      </p>`;
+    toggleBtn.textContent = "🔄 Ganti ke Caesar Cipher";
+    vigenereOptions.classList.remove("hidden");
+    isVigenere = true;
+  } else {
+    title.textContent = "CAESAR CIPHER";
+    keyContainer.innerHTML = `
+      <label for="key" class="block text-sm font-medium mb-1">Key (0-94):</label>
+      <input
+        type="number"
+        placeholder="Masukkan angka 0-94"
+        id="key"
+        class="w-full p-3 bg-gray-700 border border-gray-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+        min="0"
+        max="94"
+      />
+      <p class="text-xs text-gray-400 italic">
+        *Key (kunci): 0-94 untuk Caesar Cipher.
+      </p>`;
+    toggleBtn.textContent = "🔄 Ganti ke Vigenère Cipher";
+    vigenereOptions.classList.add("hidden");
+    isVigenere = false;
+  }
+}
+
+function setVigenereMode(mode) {
+  vigenereMode = mode;
+  const btnHuruf = document.getElementById("modeHuruf");
+  const btnAngka = document.getElementById("modeAngka");
+  if (mode === "huruf") {
+    btnHuruf.classList.add("bg-emerald-700");
+    btnHuruf.classList.remove("bg-gray-600");
+    btnAngka.classList.remove("bg-emerald-700");
+    btnAngka.classList.add("bg-gray-600");
+  } else {
+    btnAngka.classList.add("bg-emerald-700");
+    btnAngka.classList.remove("bg-gray-600");
+    btnHuruf.classList.remove("bg-emerald-700");
+    btnHuruf.classList.add("bg-gray-600");
+  }
+}
+
 function encrypt() {
   const input = document.getElementById("inputText").value;
   const key = parseInt(document.getElementById("key").value);
@@ -30,11 +95,11 @@ function decrypt() {
   document.getElementById("result").value = result;
 }
 
-function ceasarCipher(text, key, mode) {
+function caesarCipher(text, key, mode) {
   let result = "";
   const shift = mode === "encrypt" ? key : -key;
 
-  for (char of text) {
+  for (let char of text) {
     const code = char.charCodeAt(0);
     if (code >= 32 && code <= 126) {
       char = String.fromCharCode(((code - 32 + shift + 95) % 95) + 32);
@@ -46,8 +111,8 @@ function ceasarCipher(text, key, mode) {
 
 function clearText() {
   document.getElementById("inputText").value = "";
-  document.getElementById("key").value = "";
   document.getElementById("result").value = "";
+  document.getElementById("key").value = "";
 }
 
 function copyResult() {
