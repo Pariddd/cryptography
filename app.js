@@ -65,7 +65,6 @@ function setVigenereMode(mode) {
 
 function encrypt() {
   const input = document.getElementById("inputText").value.trim();
-  const key = document.getElementById("key").value.trim();
   if (input === "") {
     alert("Masukkan teks yang ingin dienkripsi terlebih dahulu!");
     return;
@@ -74,6 +73,7 @@ function encrypt() {
   let result = "";
 
   if (isVigenere) {
+    const key = document.getElementById("key").value.trim();
     if (key === "") {
       alert("Masukkan kata kunci untuk Vigenère Cipher!");
       return;
@@ -93,6 +93,7 @@ function encrypt() {
 
     result = vigenereCipher(input, key, "encrypt", vigenereMode);
   } else {
+    const key = parseInt(document.getElementById("key").value);
     if (isNaN(key) || key < 0 || key > 94) {
       alert("Masukkan key antara 0-94 untuk Caesar Cipher!");
       return;
